@@ -191,7 +191,7 @@ class PGPAccountItem extends Component {
             </span> 
           )}
 
-          {/*this.props.verified ?
+          {this.props.verified ?
             <span className="float-right" data-tip data-for={`verified-${this.props.service}`}>
               <i className="fa fa-fw fa-check-circle fa-lg" />
             </span>
@@ -199,7 +199,7 @@ class PGPAccountItem extends Component {
             <span className="float-right" data-tip data-for={`verified-${this.props.service}`}>
               <i className="fa fa-fw fa-clock-o fa-lg" />
             </span>
-          */}
+          }
         </li>
       )
     } else {
