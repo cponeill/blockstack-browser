@@ -133,6 +133,10 @@ class EditProfilePage extends Component {
       // verificationUrl = `https://www.linkedin.com/shareArticle?mini=true&url=http://www.blockstack.org&title=${verificationText}`
     } else if (service === 'hackerNews') {
       verificationUrl = `https://news.ycombinator.com/user?id=${identifier}`
+    } else if (service === 'bitcoin') {
+      verificationUrl = `https://blockchain.info/address/${identifier}`
+    } else if (service === 'ethereum') {
+      verificationUrl = `https://etherescan.io/address/${identifier}`
     }
 
     if (verificationUrl.length > 0) {
@@ -216,7 +220,15 @@ class EditProfilePage extends Component {
   generateProofUrl(service, identifier) {
     if (service === 'hackerNews') {
       return `https://news.ycombinator.com/user?id=${identifier}`
-    }
+    } 
+
+    if (service === 'bitcoin') {
+      return `https://blockchain.info/address/${identifier}`
+    } 
+
+    if (service === 'ethereum') {
+      return `https://etherescan.io/address/${identifier}`
+    } 
 
     return ''
   }
