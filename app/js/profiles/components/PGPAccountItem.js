@@ -24,6 +24,7 @@ class PGPAccountItem extends Component {
     editing: PropTypes.bool.isRequired,
     listItem: PropTypes.bool.isRequired,
     service: PropTypes.string.isRequired,
+    proofUrl: PropTypes.string,
     identifier: PropTypes.string.isRequired,
     contentUrl: PropTypes.string,
     loadPGPPublicKey: PropTypes.func.isRequired,
@@ -43,6 +44,7 @@ class PGPAccountItem extends Component {
     this.closeModal = this.closeModal.bind(this)
     this.getIconClass = this.getIconClass.bind(this)
     this.getIdentifier = this.getIdentifier.bind(this)
+    this.getAddressUrl = this.getAddressUrl.bind(this)
   }
 
   componentWillMount() {
@@ -59,6 +61,10 @@ class PGPAccountItem extends Component {
     this.setState({
       modalIsOpen: false
     })
+  }
+
+  getAddressUrl() {
+    //const addressAccountTypes =
   }
 
   loadPublicKey() {
@@ -100,6 +106,12 @@ class PGPAccountItem extends Component {
 
   onClick = (e) => {
     this.props.onClick(this.props.service)
+  }
+
+  onVerifiedCheckmarkClick = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    openInNewTab(this.props.proofUrl)
   }
 
   render() {
@@ -191,7 +203,24 @@ class PGPAccountItem extends Component {
             </span> 
           )}
 
-          {this.props.verified ?
+          {verified ?
+            <span 
+              className="float-right status" 
+              data-tip 
+              data-for={`verified-${this.props.service}`}
+              onClick={this.onVerifiedCheckmarkClick}
+            >
+              <i className="fa fa-fw fa-check-circle fa-lg" />
+            </span>
+            : 
+            (this.props.placeholder) ? 
+            <span className="float-right star">+1<i className="fa fa-w fa-star-o" /></span>
+            :
+            <span className="float-right badge badge-danger badge-verification">Unverified
+            </span>
+          }
+
+          {/*{this.props.verified ?
             <span className="float-right" data-tip data-for={`verified-${this.props.service}`}>
               <i className="fa fa-fw fa-check-circle fa-lg" />
             </span>
@@ -199,7 +228,7 @@ class PGPAccountItem extends Component {
             <span className="float-right" data-tip data-for={`verified-${this.props.service}`}>
               <i className="fa fa-fw fa-clock-o fa-lg" />
             </span>
-          }
+          }*/}
         </li>
       )
     } else {
