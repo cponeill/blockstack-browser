@@ -300,10 +300,12 @@ export function getWebAccountTypes(api) {
     },
     bitcoin: {
       label: 'Bitcoin', iconClass: 'fa-bitcoin', social: false,
+      // Can the URL template be used as a way to access a blockchain explorer?
       urlTemplate: api.bitcoinAddressUrl
     },
     ethereum: {
       label: 'Ethereum', iconClass: 'fa-key', social: false,
+      // Can the URL template be used as a way to access a blockchain explorer?
       urlTemplate: api.ethereumAddressUrl
     }
   }
