@@ -220,13 +220,9 @@ class EditProfilePage extends Component {
   generateProofUrl(service, identifier) {
     if (service === 'hackerNews') {
       return `https://news.ycombinator.com/user?id=${identifier}`
-    } 
-
-    if (service === 'bitcoin') {
+    } else if (service === 'bitcoin') {
       return `https://blockchain.info/address/${identifier}`
-    } 
-
-    if (service === 'ethereum') {
+    } else if (service === 'ethereum') {
       return `https://etherescan.io/address/${identifier}`
     } 
 
