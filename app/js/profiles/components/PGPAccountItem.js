@@ -39,13 +39,28 @@ class PGPAccountItem extends Component {
       modalIsOpen: false
     }
 
+    //this.getBitcoinAddresUrl = this.getBitcoinAddresUrl.bind(this)
     this.loadPublicKey = this.loadPublicKey.bind(this)
     this.openModal = this.openModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
     this.getIconClass = this.getIconClass.bind(this)
     this.getIdentifier = this.getIdentifier.bind(this)
-    this.getAddressUrl = this.getAddressUrl.bind(this)
   }
+
+  {/*
+  getBitcoinAddresUrl() {
+    const webAccountTypes = getWebAccountTypes(this.props.api)
+    let blockchainUrl = `https://${this.props.service}.info/${this.props.identifier}`
+    if (webAccountTypes.hasOwnProperty(this.props.service)) {
+      if (webAccountTypes[this.props.service].hasOwnProperty('urlTemplate')) {
+        let urlTemplate = webAccountTypes[this.props.service].urlTemplate
+        if (urlTemplate) {
+          blockchainUrl = urlTemplate.replace('{identifier}', this.props.identifier)
+        }
+      }
+    }
+    return blockchainUrl
+  }*/}
 
   componentWillMount() {
     this.loadPublicKey()
@@ -61,10 +76,6 @@ class PGPAccountItem extends Component {
     this.setState({
       modalIsOpen: false
     })
-  }
-
-  getAddressUrl() {
-    //const addressAccountTypes =
   }
 
   loadPublicKey() {
